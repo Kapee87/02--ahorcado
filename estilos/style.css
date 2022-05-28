@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Ruslan+Display&display=swap');
+
+html {
+
+font-family: 'Ruslan Display', cursive;
+color: #EEEEEE;
+}
+
+body{
+    background-color: #000;
+}
+h1{
+    font-size: 3rem;
+    text-align: center;
+    text-shadow:#FF7100 2px -1px 5px ;
+}
+header{
+    padding: 1rem;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main #startGame{
+    position: absolute;
+    background: #EEEEEE;
+    width: 25vw;
+    height: 8vh;
+    border: none;
+    box-shadow: #FF7100 2px -1px 8px 1px;
+    border-radius: 55px 1px;
+    padding: 0.2rem;
+    color: #222222;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    font-family: 'Ruslan Display', cursive;
+
+    
+}
+
+main #startGame:hover{
+    background-color: #FF7100;
+    color: #EEEEEE;
+    box-shadow: #222222 2px -1px 10px 2px;
+
+    transform: rotate(360deg) scale(2, 2);
+    transition:all 1s;
+}
+
+main #startGame:active{
+    transform:rotate(-360deg) scale(0, 0);
+    transition: all 2s;
+}
+
+footer{
+    text-align: center;
+    color: #eeeeeec4;
+}
+
+.hidden {
+    display: none;
+    transition: all 3s;
+}
+
+.visible{
+    display: grid;
+}
