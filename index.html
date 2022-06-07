@@ -15,13 +15,28 @@
 
     </header>
 
-    <main>
+    <main class="aiuda">
+       <section class="caja-nivel-tiempo">
+            
+            <button id="Nfacil" class="dificultad dificultadSelect">facil</button>
+            <button id="Nmedio" class="dificultad">medio</button>
+            <button id="Ndificil" class="dificultad">difícil</button>
+            <h2 id="indicador" class="indicador hidden">Tiempo restante: <span id="tiempo">0</span></h2>
+       </section>
+       <div class="canvas-box">
+            <canvas class="stand-by">
+            </canvas>
+            <p class="aiuda hidden" id="aiuda"> Para comenzar el juego, elija la dificultad y pulse el botón "empezar!" <br> Luego puede presionar las teclas de su teclado para intentar hallar coincidencias de letra con la palabra secreta o elegir del abecedario de botones. <br> cada nivel añade cantidad de letras a la palabra secreta y disminuye el tiempo de juego para aumentar la dificultad del desafío <br> <em> Mucha Suerte!</em> </p>
+       </div>
+       <div class="button-box">
         <button id="startGame">Empezar!</button>
-        <canvas width="800" height="600">
-        
 
-        </canvas>
+        <Button id="reglas">Reglas</Button>
+       </div>
+       
+      
     </main>
+    <textarea name="" id="palabraSecreta"  ></textarea>
     <footer>
         <span>Sitio desarrollado por Nahuel Andrés Montaner</span>
         <p>Todos los derechos reservados</p>

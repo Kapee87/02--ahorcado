@@ -7,7 +7,9 @@ color: #EEEEEE;
 }
 
 body{
-    background-color: #000;
+    background-color: #080908;
+    display: flex;
+    flex-direction: column;
 }
 h1{
     font-size: 3rem;
@@ -16,47 +18,75 @@ h1{
 }
 header{
     padding: 1rem;
+    border-radius: 0 0 95% 85% / 350%;
+    background-color: #000;
+    box-shadow: #FF7100 -1px -1px 10px 1px;
+    margin-bottom: 1rem;
 }
 
 main{
+    
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-main #startGame{
-    position: absolute;
-    background: #EEEEEE;
-    width: 25vw;
-    height: 8vh;
-    border: none;
-    box-shadow: #FF7100 2px -1px 8px 1px;
-    border-radius: 55px 1px;
-    padding: 0.2rem;
-    color: #222222;
-    font-size: 1.3rem;
-    font-weight: bolder;
-    font-family: 'Ruslan Display', cursive;
 
+.caja-nivel-tiempo{
+    
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; /*deberia modificarse en el desarrollo del diseño responsivo para que no wrapee cuando se agranda la pantalla*/
     
 }
-
-main #startGame:hover{
+.button-box{
+    display: flex;
+}
+main .button-box #startGame, main .button-box #reglas{
     background-color: #FF7100;
     color: #EEEEEE;
     box-shadow: #222222 2px -1px 10px 2px;
+    width: 25vw;
+    height: 8vh;
+    border: none;
+    border-radius: 55px 1px;
+    padding: 0.2rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    font-family: 'Ruslan Display', cursive;
+    
+    
+}
+
+main #startGame:hover, main .button-box #reglas:hover{
+    background: #EEEEEE;
+    box-shadow: #FF7100 2px -1px 8px 1px;
+    color: #222222;
+  
 
     transform: rotate(360deg) scale(2, 2);
     transition:all 1s;
 }
-
+main .button-box #reglas:active{
+    transform: scale(2.1);
+    transition: all 0s;
+}
 main #startGame:active{
     transform:rotate(-360deg) scale(0, 0);
     transition: all 2s;
 }
 
+
 footer{
     text-align: center;
     color: #eeeeeec4;
+    background-color: #000;
+    width: 100%;
+    position:fixed;
+    bottom: 0;
+    padding: 1rem;
 }
 
 .hidden {
@@ -66,4 +96,71 @@ footer{
 
 .visible{
     display: grid;
+}
+
+main::after{
+    width: 100vw;
+    height: 100vh;
+    background-color: #FF7100;
+   
+}
+#palabraSecreta{
+    font-size: large;
+    color: red;
+    background-color: #222222;
+    position: absolute;
+    bottom: 4rem;
+}
+
+main .dificultad{
+    background-color:#b45100;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 2px 80px 80px 31px/60%;
+    width: 12vw;
+    height: 8vh;
+    box-shadow: #222222 -1px 1px 3px 1px;
+    margin: 1rem;
+    font-family: 'Ruslan Display', cursive;
+    font-size: 1rem;
+    font-weight: 500;
+    /* chequear tamaños y colocar minimo y maximo */
+}
+main .dificultadSelect{
+    background-color: #FF7100;
+    box-shadow: #EEEEEE -1px 1px 3px 1px;
+}
+main .dificultad:hover{
+    transform:scale(1.2, 1.2);
+}
+main .dificultad:active{
+    transform:rotate(-360deg);
+    background-color:#EEEEEE;
+
+}
+
+main .indicador{
+    font-size: 2.5rem;
+    color: #FF7100;
+    
+}
+main .canvas-box{
+    height: 40vh;
+    width: 80vw;
+}
+main .canvas-box .stand-by{
+    width: 0;
+    height: 0;
+}
+main .canvas-box .jugar{
+    width: 80vw;
+    height: 70vh;
+    border: solid red;
+
+}
+main .canvas-box .aiuda{
+    
+    text-align: center;
+    line-height: 1.5rem;
+    
 }
