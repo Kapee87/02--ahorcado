@@ -181,7 +181,8 @@ function juegoTerminado(){
     resetearGeneral();
     alternarVisibilidad();
     $estadoAnterior.classList.remove('hidden');
-
+    resetearEstiloNivel();
+    elegirDificultad(0);
 }
 
 function resetearGeneral(){
@@ -195,6 +196,7 @@ function resetearGeneral(){
     contadorExito=1;
     repetida=[];
     palabraTemp=[];
+    
 
 }
 
@@ -320,12 +322,13 @@ function verificarLetra(e){
     function verificarGanador(repetidAcertada, pifiar){
      if (contadorExito === palabra.length || contadorExito > palabra.length){
          console.log("ha ganau desgraciau!");
-         crearTablero();
+         clearTablero();
          dibujarMensajeFinal("Ganaste guachi!");
          clearInterval(conteo);
-         $estadoAnterior.innerHTML = 'La ultima vez Ganaste';
+         $estadoAnterior.innerHTML = ` ${dificultad < 2 ? 'La ultima vez Ganaste, Subi el nivel': 'Felicitaciones! Ganaste el máximo nivel!'}`;
          pincel.fillStyle="white";
-         setTimeout(juegoTerminado, 500);
+         setTimeout(juegoTerminado, 1000);
+         mostrarWinLooser();
      }else if(!pifiar) {
         contadorExito+= repetidAcertada;
         repetida.push(chr);
@@ -336,12 +339,13 @@ function verificarLetra(e){
     function verificarPerdedor(pifiar){
         
      if (intentos === 8){
-         crearTablero();
+        clearTablero();
         console.log("ha perdiu desgraciau!");
         dibujarMensajeFinal("Perdiste. LOOOOOOSER!")
         clearInterval(conteo);
-        setTimeout(juegoTerminado, 500);
+        setTimeout(juegoTerminado, 1000);
         $estadoAnterior.innerHTML = 'La ultima vez Perdiste';
+        mostrarWinLooser();
     }else if(!pifiar) {
        contadorExito++;
     }
@@ -354,9 +358,21 @@ function verificarLetra(e){
         console.log(msj+' este es el mensaje')
     }
   
-
+    function mostrarWinLooser(){
+        
+        const temporizadorWinLooser = setInterval($estadoAnterior.classList.add('colormation'), 500);
+        setTimeout(()=>{
+            clearInterval(temporizadorWinLooser)
+            $estadoAnterior.classList.toggle('hidden');
+            $estadoAnterior.classList.toggle('colormation')
+        }, 5000 );
+        
+    }
   
-    
+    function clearTablero(){
+        pincel.fillStyle = "white";
+        pincel.fillRect(0,0,1000,1000);
+    }
 
 
 
