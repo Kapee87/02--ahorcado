@@ -27,6 +27,10 @@ header{
     gap: 2rem;
     flex-wrap: wrap;
 }
+header h1{
+    display: flex;
+    gap: 10vw;
+}
 
 header h1 .logo{
     width: 6vw;
@@ -183,6 +187,15 @@ footer{
     display: grid;
 }
 
+
+
+#copa img{
+    width: 15rem;
+    height: 15rem;
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+}
 
 .colormation {
   
