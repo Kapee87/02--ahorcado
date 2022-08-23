@@ -28,7 +28,7 @@
        <div class="canvas-box">
             <canvas class="stand-by">
             </canvas>
-            <p class="aiuda hidden" id="aiuda"> Para comenzar el juego, elija la dificultad y pulse el botón "empezar!" <br> Luego puede presionar las teclas de su teclado para intentar hallar coincidencias de letra con la palabra secreta o elegir del abecedario de botones. <br> cada nivel añade cantidad de letras a la palabra secreta y disminuye el tiempo de juego para aumentar la dificultad del desafío <br> <em> Mucha Suerte!</em> </p>
+            <p class="aiuda hidden" id="aiuda"> Para comenzar el juego, elija la dificultad y pulse el botón "empezar!" <br> Luego puede presionar las teclas de su teclado (en móvil busque la caja de texto) para intentar hallar coincidencias de letra con la palabra secreta o elegir del abecedario de botones. <br> cada nivel añade cantidad de letras a la palabra secreta y disminuye el tiempo de juego para aumentar la dificultad del desafío <br> <em> Mucha Suerte!</em> </p>
        </div>
        <div class="button-box">
         <button id="startGame">Empezar!</button>
@@ -41,6 +41,9 @@
     <section id="copa" class="hidden">
         <img src="./assets/c0fed1ff74a11b820947db59e7b94382-icono-de-copa-de-campeonato-de-futbol.png" alt="copa ganador maximo nivel">
     </section>
+    <section id="inputBox">
+        <textarea name="" id="inputForMobile" class="hidden" cols="5" rows="3" oninput=" esValidoMobile(this.value) " maxlength="1" onkeyup="javascript:this.value=this.value.toUpperCase(); javascript:setTimeout(()=>{this.value=''}, 500); "></textarea>
+    </section>
     <!-- para uso de control interno -->
     <!-- <textarea name="" id="palabraSecreta" ></textarea>  -->
     <footer>
@@ -50,3 +53,5 @@
     <script src="./scripts/script.js"></script>
 </body>
 </html>
+
+

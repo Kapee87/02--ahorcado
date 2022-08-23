@@ -103,6 +103,7 @@ const $aiuda = document.querySelector('#aiuda');
 const $estadoAnterior = document.querySelector("#estadoAnterior")
 let pantalla = document.querySelector("canvas");
 let $copa = document.querySelector('#copa');
+let $input = document.querySelector('#inputForMobile')
 
 let pincel = pantalla.getContext("2d");
 let startGamebtn = document.querySelector("#startGame");
@@ -117,6 +118,7 @@ let chr;
 let repetida = [];
 
 
+
 // funciones
 function crearTablero() {
 
@@ -125,7 +127,6 @@ function crearTablero() {
     pincel.fillRect(0, 0, 1000, 1000);
 
 }
-
 
 
 function alternarVisibilidad() {
@@ -138,6 +139,7 @@ function alternarVisibilidad() {
     $aiuda.classList.add('hidden');
     pantalla.classList.toggle('stand-by');
     pantalla.classList.toggle('jugar');
+    $input.classList.toggle("hidden");
 
 }
 function alternarVisibilidadOff() {
@@ -150,7 +152,7 @@ function alternarVisibilidadOff() {
     $aiuda.classList.add('hidden');
     pantalla.classList.add('stand-by');
     pantalla.classList.remove('jugar');
-    
+    $input.classList.toggle("hidden");
 
 }
 
@@ -229,6 +231,7 @@ function juegoTerminado() {
     resetearGeneral();
     alternarVisibilidadOff();
     elegirDificultad(0);
+    
 }
 
 function resetearGeneral() {
@@ -368,14 +371,16 @@ function LetraIncorrecta(letra, indice) {
 function verificarGanador(repetidAcertada, pifiar) {
     if (contadorExito === palabra.length || contadorExito > palabra.length) {
         console.log("ha ganau desgraciau!");
+       setTimeout(()=>{
         clearTablero();
         dibujarMensajeFinal("Ganaste guachi!");
         clearInterval(conteo);
         $estadoAnterior.innerHTML = verificarDifiWin();
-
+        
         pincel.fillStyle = "white";
         setTimeout(juegoTerminado, 1000);
         mostrarWinLooser();
+       }, 1000)
     } else if (!pifiar) {
         contadorExito += repetidAcertada;
         repetida.push(chr);
@@ -388,6 +393,7 @@ function verificarDifiWin() {
     if (dificultad < 2) {
         return 'La ultima vez Ganaste, Subi el nivel'
     } else {
+        
         setTimeout(() => { $copa.classList.toggle('hidden') }, 1000)
         return 'Felicitaciones! Ganaste el máximo nivel!'
 
@@ -399,14 +405,17 @@ function verificarDifiWin() {
 
 function verificarPerdedor(pifiar) {
 
-    if (intentos === 8) {
+    if (intentos > 7) {
         clearTablero();
-        console.log("ha perdiu desgraciau!");
+        setTimeout(()=>{
+            console.log("ha perdiu desgraciau!");
         dibujarMensajeFinal("Perdiste. LOOOOOOSER!")
         clearInterval(conteo);
+        ganadas=0;
         $estadoAnterior.innerHTML = 'La ultima vez Perdiste';
         setTimeout(juegoTerminado, 1000);
         mostrarWinLooser();
+        }, 1000)
     } else if (!pifiar) {
         contadorExito++;
     }
@@ -414,7 +423,7 @@ function verificarPerdedor(pifiar) {
 }
 function dibujarMensajeFinal(msj) {
     pincel.fillStyle = 'black'
-    pincel.fillText(msj, 40, 50, 100);
+    pincel.fillText(msj, 40, 50, 120);
 
     console.log(msj + ' este es el mensaje')
 }
@@ -424,9 +433,10 @@ function mostrarWinLooser() {
     const temporizadorWinLooser = setInterval($estadoAnterior.classList.add('colormation'), 500);
     setTimeout(() => {
         clearInterval(temporizadorWinLooser)
-        $estadoAnterior.classList.toggle('hidden');
+        $estadoAnterior.classList.add('hidden');
         $estadoAnterior.classList.toggle('colormation');
-        $copa.classList.toggle('hidden');
+        $copa.classList.add('hidden');
+    
     }, 5000);
 
 }
@@ -444,7 +454,17 @@ function esValido(c) {
 }
 
 // eventos
-
+function esValidoMobile(c) {
+    // chr = String.fromCharCode(e.which).toUpperCase();
+    c = c.charCodeAt(0);
+    
+    if (c >= 97 && c <= 122){
+        verificarLetra(c);
+        console.log("entro bien")
+    }else{
+        console.log("CARACTER ERRADO");
+    }
+}
 
 startGamebtn.addEventListener('click', () => {
     crearTablero();

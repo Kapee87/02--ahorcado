@@ -139,6 +139,20 @@ main .dificultad:active{
 
 }
 
+main .disabled{
+    background-color:#444444;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 2px 80px 80px 31px/60%;
+    width: 12vw;
+    height: 8vh;
+    box-shadow: #222222 -1px 1px 3px 1px;
+    margin: 1rem;
+    font-family: 'Ruslan Display', cursive;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 main .indicador{
     font-size: 2rem;
     color: #FF7100;
@@ -187,7 +201,10 @@ footer{
     display: grid;
 }
 
-
+#copa{
+    align-self: center;
+    justify-self: center;
+}
 
 #copa img{
     width: 15rem;
@@ -195,6 +212,11 @@ footer{
     position: absolute;
     top: 30vh;
     left: 35vw;
+}
+
+#inputBox{
+    display: none;
+    font-size: 2rem;
 }
 
 .colormation {
@@ -226,4 +248,21 @@ footer{
     0% { opacity: 1.0; }
      50% { opacity: 0.0; }
     100% { opacity: 1.0; }
+  }
+
+  @media screen and (max-width:1024px) {
+    #inputBox{
+        display: flex;
+        position: absolute;
+        bottom: 3.5rem;
+        align-self: center;
+    }
+  }
+
+  @media screen and (min-width:768px) {
+    #copa img{
+        top: 30vh;
+        left: 43vw;
+    }
+        
   }
